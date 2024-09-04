@@ -21,4 +21,3 @@ class NoteFactory extends Factory
         ];
     }
 }
-

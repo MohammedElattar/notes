@@ -19,10 +19,10 @@ trait HttpResponse
         mixed $data = null,
         string $message = 'Success',
         int $code = Response::HTTP_OK,
-        bool $showToast = null,
+        ?bool $showToast = null,
         array $additional = [],
     ): JsonResponse {
-        $showToast = !is_null($showToast) ? $showToast : request()->method() != 'GET';
+        $showToast = ! is_null($showToast) ? $showToast : request()->method() != 'GET';
 
         return response()->json(array_merge([
             'data' => $data,
@@ -37,7 +37,7 @@ trait HttpResponse
         mixed $data = null,
         string $message = 'Success',
         int $code = Response::HTTP_OK,
-        bool $showToast = null,
+        ?bool $showToast = null,
         array $additional = [],
     ): JsonResponse {
         return $this->successResponse(
@@ -52,8 +52,8 @@ trait HttpResponse
     public function unauthenticatedResponse(
         string $message = 'You Are not authenticated',
         int $code = Response::HTTP_UNAUTHORIZED,
-               $data = null,
-        bool $showToast = null,
+        $data = null,
+        ?bool $showToast = null,
         array $additional = [],
     ): JsonResponse {
         return $this->errorResponse(
@@ -72,7 +72,7 @@ trait HttpResponse
      */
     public function throwNotAuthenticated(): void
     {
-        throw new AuthenticationException();
+        throw new AuthenticationException;
     }
 
     /**
@@ -82,7 +82,7 @@ trait HttpResponse
         $data,
         string $message = 'Data Fetched Successfully',
         int $code = 200,
-        bool $showToast = null,
+        ?bool $showToast = null,
         array $additional = [],
     ): JsonResponse {
         return $this->successResponse(
@@ -130,7 +130,7 @@ trait HttpResponse
         string $message = 'Access Denied',
         mixed $data = null,
         int $code = Response::HTTP_FORBIDDEN,
-        bool $showToast = null,
+        ?bool $showToast = null,
         array $additional = []
     ): JsonResponse {
         return $this->errorResponse(
@@ -149,7 +149,7 @@ trait HttpResponse
         $data = null,
         int $code = Response::HTTP_NOT_FOUND,
         string $message = 'Error Occurred',
-        bool $showToast = null,
+        ?bool $showToast = null,
         array $additional = [],
     ): JsonResponse {
         $response = [
@@ -168,7 +168,7 @@ trait HttpResponse
 
     public function notFoundResponse(
         string $message = 'Not Found',
-        array $data = null,
+        ?array $data = null,
         int $code = Response::HTTP_NOT_FOUND,
         bool $showToast = true,
         array $additional = [],
@@ -183,7 +183,7 @@ trait HttpResponse
     }
 
     public function createdResponse(
-        array|JsonResource $data = null,
+        array|JsonResource|null $data = null,
         string $message = 'Resource Created Successfully',
         int $code = Response::HTTP_CREATED,
         bool $showToast = true,
@@ -203,7 +203,7 @@ trait HttpResponse
      */
     public function throwValidationException(
         Validator $validator,
-        array $error = null,
+        ?array $error = null,
     ): void {
         $errors = $error ?: $validator->errors()->toArray();
         $errorsKeys = array_keys($errors);

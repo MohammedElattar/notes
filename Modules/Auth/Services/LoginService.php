@@ -1,13 +1,10 @@
 <?php
+
 namespace Modules\Auth\Services;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-use Modules\Auth\Contracts\VerifyUser;
 use Modules\Auth\Enums\AuthEnum;
-use Modules\Auth\Enums\UserStatusEnum;
 use Psr\SimpleCache\InvalidArgumentException;
 
 class LoginService
@@ -44,8 +41,7 @@ class LoginService
         }
 
         // Check if there are any errors and return with error messages
-        if($errors)
-        {
+        if ($errors) {
             return $errors;
         }
 

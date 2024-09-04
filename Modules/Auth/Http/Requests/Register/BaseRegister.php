@@ -12,10 +12,7 @@ class BaseRegister extends FormRequest
 {
     use HttpResponse;
 
-    public function rules()
-    {
-
-    }
+    public function rules() {}
 
     public static function baseRules(bool $excludeAvatar = false, bool $inUpdate = false, $idValue = null): array
     {
@@ -23,7 +20,7 @@ class BaseRegister extends FormRequest
             'name' => ValidationRuleHelper::stringRules(),
             'phone' => ValidationRuleHelper::phoneRules(),
             'email' => ValidationRuleHelper::emailRules([
-                'unique' => ValidationRuleHelper::getUniqueColumn($inUpdate, (new User())->getTable(), $idValue),
+                'unique' => ValidationRuleHelper::getUniqueColumn($inUpdate, (new User)->getTable(), $idValue),
             ]),
             'password' => ValidationRuleHelper::defaultPasswordRules([
                 'required' => $inUpdate ? 'sometimes' : 'required',

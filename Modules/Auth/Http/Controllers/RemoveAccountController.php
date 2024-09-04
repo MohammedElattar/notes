@@ -18,7 +18,7 @@ class RemoveAccountController extends Controller
         $user = auth()->user();
 
         if (UserTypeEnum::getCurrentUserAlphaType() != UserTypeEnum::ADMIN) {
-            (new LogoutUser())->handle();
+            (new LogoutUser)->handle();
             $user->delete();
 
             return $this->okResponse(

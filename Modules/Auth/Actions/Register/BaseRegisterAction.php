@@ -9,11 +9,9 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Modules\Auth\Enums\UserTypeEnum;
-use Modules\Auth\Factories\VerifyUserFactory;
 use Modules\Auth\Strategies\Verifiable;
 use Modules\FcmNotification\Enums\NotificationTypeEnum;
 use Modules\FcmNotification\Notifications\FcmNotification;
-use Modules\Wallet\Entities\Wallet;
 
 class BaseRegisterAction
 {
@@ -21,7 +19,7 @@ class BaseRegisterAction
      * @throws \Throwable
      * @throws ValidationErrorsException
      */
-    public function handle(array $data, Verifiable $verifiable,  ?Closure $closure = null)
+    public function handle(array $data, Verifiable $verifiable, ?Closure $closure = null)
     {
         $errors = [];
 
@@ -37,11 +35,9 @@ class BaseRegisterAction
 
                 return $user;
             });
-        }
-        catch (ValidationErrorsException $e) {
+        } catch (ValidationErrorsException $e) {
             throw $e;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $errors['operation_failed'] = $e->getMessage();
 
             throw new ValidationErrorsException($errors);

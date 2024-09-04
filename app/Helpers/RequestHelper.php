@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Helpers\GeneralHelper;
-
 class RequestHelper
 {
     public static function loginIfHasToken($thisValue, array $additionalMiddlewares = [], array $onlyMethods = []): void

@@ -17,14 +17,13 @@ class LoginController extends Controller
 {
     use HttpResponse;
 
-    public function __construct(private readonly LoginService $loginService)
-    {
-    }
+    public function __construct(private readonly LoginService $loginService) {}
 
     public function view()
     {
         return view('login');
     }
+
     /**
      * @throws InvalidArgumentException
      */
@@ -32,13 +31,12 @@ class LoginController extends Controller
     {
         $result = $this->loginService->loginSpa($request->validated());
 
-        if($result instanceof User)
-        {
+        if ($result instanceof User) {
             return redirect()->intended('/'); // Replace 'dashboard' with the appropriate route
         }
 
         return Redirect::back()->withErrors($result)->withInput();
-//        return $this->loginUser($result);
+        //        return $this->loginUser($result);
     }
 
     protected function loginUser($result): JsonResponse

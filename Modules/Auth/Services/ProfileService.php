@@ -19,7 +19,7 @@ class ProfileService
         // Update User Avatar If Exists
         if (isset($data['avatar'])) {
 
-            $fileOperationService = new FileOperationService();
+            $fileOperationService = new FileOperationService;
             $oldAvatar = $user->getFirstMedia(ProfileController::getUsersCollectionName());
             $oldAvatar?->delete();
             $fileOperationService->storeImageFromRequest(

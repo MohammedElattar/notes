@@ -20,7 +20,7 @@ class DeliveryRegisterAction
         ];
 
         $delivery = (new BaseRegisterAction)->handle($data, function ($user, $errors, $data) {
-            $fileOperationService = new FileOperationService();
+            $fileOperationService = new FileOperationService;
 
             $delivery = $user->delivery()->create($data);
 

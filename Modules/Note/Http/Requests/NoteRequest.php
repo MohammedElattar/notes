@@ -3,8 +3,8 @@
 namespace Modules\Note\Http\Requests;
 
 use App\Helpers\ValidationRuleHelper;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\HttpResponse;
+use Illuminate\Foundation\Http\FormRequest;
 
 class NoteRequest extends FormRequest
 {

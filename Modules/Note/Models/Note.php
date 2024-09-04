@@ -3,8 +3,8 @@
 namespace Modules\Note\Models;
 
 use App\Traits\PaginationTrait;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Note\Database\Factories\NoteFactory;
 
 class Note extends Model

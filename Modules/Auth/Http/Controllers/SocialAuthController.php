@@ -21,7 +21,7 @@ class SocialAuthController extends Controller
 
     public function __construct()
     {
-        $this->socialite = new SocialiteService();
+        $this->socialite = new SocialiteService;
     }
 
     /**

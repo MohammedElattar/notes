@@ -24,42 +24,41 @@ use Modules\Auth\Http\Controllers\VerifyController;
 |
 */
 
-
-Route::group(['middleware' => 'guest'], function(){
-    Route::get('login', [LoginController::class, 'view'])->name("login");;
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('login', [LoginController::class, 'view'])->name('login');
     // Social Auth
-//    Route::post('social/callback', [SocialAuthController::class, 'handleProviderCallback']);
+    //    Route::post('social/callback', [SocialAuthController::class, 'handleProviderCallback']);
 
     // Login
     Route::group(['prefix' => 'login'], function () {
-        Route::post('dashboard', [LoginController::class, 'loginSpa'])->name("auth-user");;
-//        Route::post('mobile', [LoginController::class, 'loginMobile']);
+        Route::post('dashboard', [LoginController::class, 'loginSpa'])->name('auth-user');
+        //        Route::post('mobile', [LoginController::class, 'loginMobile']);
     });
 
     // Register
-//    Route::group(['prefix' => 'register'], function(){
-//        Route::post('client', [RegisterController::class, 'client']);
-//    });
+    //    Route::group(['prefix' => 'register'], function(){
+    //        Route::post('client', [RegisterController::class, 'client']);
+    //    });
 
     // Verify User
-//    if(VerifyConfigHelper::enabled()) {
-//        Route::group(['prefix' => 'verify_user'], function () {
-//            Route::post('', [VerifyController::class, 'verify'])->middleware(['throttle:10,1']);
-//            Route::post('resend', [VerifyController::class, 'send'])->middleware(['throttle:10,1']);
-//        });
-//
-//        // Password
-//        Route::group(['prefix' => 'password'], function () {
-//            Route::post('forgot_password', [PasswordResetController::class, 'forgotPassword'])->middleware(['throttle:10,1']);
-//            Route::post('reset_password', [PasswordResetController::class, 'resetPassword']);
-//        });
-//    }
+    //    if(VerifyConfigHelper::enabled()) {
+    //        Route::group(['prefix' => 'verify_user'], function () {
+    //            Route::post('', [VerifyController::class, 'verify'])->middleware(['throttle:10,1']);
+    //            Route::post('resend', [VerifyController::class, 'send'])->middleware(['throttle:10,1']);
+    //        });
+    //
+    //        // Password
+    //        Route::group(['prefix' => 'password'], function () {
+    //            Route::post('forgot_password', [PasswordResetController::class, 'forgotPassword'])->middleware(['throttle:10,1']);
+    //            Route::post('reset_password', [PasswordResetController::class, 'resetPassword']);
+    //        });
+    //    }
 
 });
 
-Route::group(['middleware' => GeneralHelper::getDefaultLoggedUserMiddlewares()], function(){
+Route::group(['middleware' => GeneralHelper::getDefaultLoggedUserMiddlewares()], function () {
     // Logout
-    Route::post('logout', LogoutController::class)->name("logout");
+    Route::post('logout', LogoutController::class)->name('logout');
 
     // Change User Password
     Route::put('password/change_password', [PasswordController::class, 'changePassword']);

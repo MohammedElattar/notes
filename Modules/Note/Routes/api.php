@@ -1,9 +1,5 @@
 <?php
 
-use App\Helpers\GeneralHelper;
-use Illuminate\Support\Facades\Route;
-use Modules\Note\Http\Controllers\NoteController;
-
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -14,4 +10,3 @@ use Modules\Note\Http\Controllers\NoteController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-

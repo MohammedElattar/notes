@@ -9,7 +9,7 @@ abstract class AbstractAuthException extends Exception
 {
     public static function createInstance(): static
     {
-        return new static();
+        return new static;
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace Modules\Note\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Modules\Note\Http\Requests\NoteRequest;
 use Modules\Note\Models\Note;
 
@@ -32,8 +31,7 @@ class NoteController extends Controller
     {
         $note = Note::query()->findOr($id);
 
-        if(! $note)
-        {
+        if (! $note) {
             return redirect()->route('notes.index');
         }
 
@@ -47,8 +45,7 @@ class NoteController extends Controller
     {
         $note = Note::query()->findOrFail($note);
 
-        if(! $note)
-        {
+        if (! $note) {
             return redirect()->route('notes.index');
         }
 

@@ -7,7 +7,6 @@ use App\Traits\HttpResponse;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
-use Modules\GeneralConfig;
 
 class ChangePasswordRequest extends FormRequest
 {

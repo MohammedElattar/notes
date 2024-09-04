@@ -2,8 +2,8 @@
 
 namespace Modules\Note\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(): void
     {
-//        $this->mapApiRoutes();
+        //        $this->mapApiRoutes();
 
         $this->mapWebRoutes();
     }

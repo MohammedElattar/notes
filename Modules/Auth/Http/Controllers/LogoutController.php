@@ -13,7 +13,7 @@ class LogoutController extends Controller
 
     public function __invoke(): JsonResponse
     {
-        (new LogoutUser())->handle();
+        (new LogoutUser)->handle();
 
         return $this->okResponse(
             message: translate_success_message('user', 'logged_out')

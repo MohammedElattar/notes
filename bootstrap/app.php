@@ -20,10 +20,7 @@ use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Str;
-use Modules\Role\Helpers\PermissionExceptionHelper;
 use Modules\Role\Http\Middleware\PermissionMiddleware;
-use Modules\Tenant\Helpers\TenantExceptionHelper;
-use Modules\Tenant\Helpers\TenantMiddlewareHelper;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -38,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Global Middlewares
         $middleware->append([
             SetDefaultLocale::class,
-//            AlwaysAcceptJson::class,
+            //            AlwaysAcceptJson::class,
         ]);
 
         $middleware->api([
@@ -57,7 +54,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'auth' => Authenticate::class,
             'guest' => RedirectIfAuthenticated::class,
-//            'permission' => PermissionMiddleware::class,
+            //            'permission' => PermissionMiddleware::class,
             'account_must_be_active' => AccountMustBeActive::class,
             'must_be_verified' => MustBeVerified::class,
             //'user_type_in' => CheckUserType::class,
@@ -70,7 +67,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         // Handle Unauthorized U
-        $exceptions->renderable(function (AuthenticationException $e, $req) use ($httpResponse) {
+        $exceptions->renderable(function (AuthenticationException $e, $req) {
             return redirect()->intended(route('login'));
         });
 
